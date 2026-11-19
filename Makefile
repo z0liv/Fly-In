@@ -1,6 +1,7 @@
 VENV = .venv
 BIN = ${VENV}/bin
 PYTHON = ${BIN}/python3
+DEBUG = ${PYTHON} -m pdb
 PIP = ${BIN}/pip
 FLAKE = ${BIN}/flake8 .
 MYPY = ${BIN}/mypy . --warn-return-any --warn-unused-ignores \
@@ -16,6 +17,9 @@ all: run
 
 run: install
 	${PYTHON} ${MAIN} ${MAP}
+
+debug: install
+	${DEBUG} ${MAIN} ${MAP}
 
 install: ${INSTALLED}
 
