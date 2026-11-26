@@ -1,5 +1,5 @@
 from enum import Enum
-from pydantic import (BaseModel, Field, field_validator)
+from pydantic import (BaseModel, Field, field_validator, ConfigDict)
 
 
 class ZoneType(Enum):
@@ -18,6 +18,7 @@ class ZoneType(Enum):
 
 
 class Zone(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     name: str
     x: int
     y: int

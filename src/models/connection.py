@@ -1,9 +1,10 @@
-from pydantic import (BaseModel, Field, model_validator)
+from pydantic import (BaseModel, Field, model_validator, ConfigDict)
 
 
 class Connection(BaseModel):
     zone_a: str
     zone_b: str
+    model_config = ConfigDict(extra="forbid")
     max_link_capacity: int = Field(default=1, ge=1)
 
     @model_validator(mode="after")

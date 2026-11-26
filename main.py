@@ -1,11 +1,12 @@
 import sys
+from src.parse import parse_map
 
 
 def main() -> None:
-    map = sys.argv[1]
+    filename = sys.argv[1]
     try:
-        with open(map) as file:
-            print(file.read())
+        sim_map = parse_map(filename)
+        print(sim_map)
     except Exception as error:
         print(error)
     print("Hello world!")
